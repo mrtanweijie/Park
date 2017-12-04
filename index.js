@@ -24,7 +24,7 @@ let storage = async newsList => {
   let newsListTem = []
   for (const item of newsList) {
     let newsData = await newsService.findObj({ url: item.url })
-    if (!newsData) {
+    if (!newsData && item.url) {
       newsListTem.push(item)
     }
   }

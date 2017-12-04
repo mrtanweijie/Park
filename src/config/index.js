@@ -1,3 +1,3 @@
-import mongodbConfig from './mongodb'
+import mongodbConfig from './mongo'
 
 export default { mongodbConfig }
