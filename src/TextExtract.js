@@ -19,17 +19,22 @@ class TextExtract {
       return this.oscExtract()
     }
   }
+  extractDataFactory (url, title, source) {
+    return {
+      url,
+      title,
+      source,
+      status: OBJ_STATUS.DEFAULT,
+      createdTime: new Date()
+    }
+  }
   readHubExtract () {
     let nodeList = this.$('#itemList').find('.enableVisited')
     nodeList.each((i, e) => {
       let a = this.$(e).find('a')
-      this.extractData.push({
-        url: a.attr('href'),
-        title: a.text(),
-        source: SOURCECODE.Readhub,
-        status: OBJ_STATUS.DEFAULT,
-        createdTime: new Date()
-      })
+      this.extractData.push(
+        this.extractDataFactory(a.attr('href'), a.text(), SOURCECODE.Readhub)
+      )
     })
     return this.extractData
   }
@@ -38,13 +43,13 @@ class TextExtract {
     let nodeList = this.$('#kinds-of-news').find('.item')
     nodeList.each((i, e) => {
       let a = this.$(e).find('a')
-      this.extractData.push({
-        url: fullPath(this.seedData.host, a.attr('href')),
-        title: stringTrim(a.find('.text-ellipsis').text()),
-        source: SOURCECODE.oschina,
-        status: OBJ_STATUS.DEFAULT,
-        createdTime: new Date()
-      })
+      this.extractData.push(
+        this.extractDataFactory(
+          fullPath(this.seedData.host),
+          stringTrim(a.find('.text-ellipsis').text()),
+          SOURCECODE.oschina
+        )
+      )
     })
     return this.extractData
   }
