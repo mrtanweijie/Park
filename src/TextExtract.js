@@ -1,6 +1,6 @@
 import cheerio from 'cheerio'
 import { stringTrim, fullPath } from './utils'
-import { SOURCECODE } from './Constants'
+import { SOURCECODE, OBJ_STATUS } from './Constants'
 class TextExtract {
   constructor (seedData, html) {
     this.seedData = seedData
@@ -26,7 +26,9 @@ class TextExtract {
       this.extractData.push({
         url: a.attr('href'),
         title: a.text(),
-        source: SOURCECODE.Readhub
+        source: SOURCECODE.Readhub,
+        status: OBJ_STATUS.DEFAULT,
+        createdTime: new Date()
       })
     })
     return this.extractData
@@ -39,7 +41,9 @@ class TextExtract {
       this.extractData.push({
         url: fullPath(this.seedData.host, a.attr('href')),
         title: stringTrim(a.find('.text-ellipsis').text()),
-        source: SOURCECODE.oschina
+        source: SOURCECODE.oschina,
+        status: OBJ_STATUS.DEFAULT,
+        createdTime: new Date()
       })
     })
     return this.extractData
