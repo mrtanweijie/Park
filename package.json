@@ -1,0 +1,27 @@
+{
+  "name": "park",
+  "version": "0.0.1",
+  "author": "twj <474481263@qq.com>",
+  "description": "ocean spider",
+  "repository": {},
+  "scripts": {
+    "spider": "babel-node index.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "es6-error": "^4.0.2"
+  }
+}
