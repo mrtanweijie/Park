@@ -1,15 +1,18 @@
 import request from 'request'
-import USERAGENT from './UserAgent'
+import { UserAgent } from './Constants'
 class Downloader {
   constructor (url) {
     this.url = url
   }
+  randomUserAgent () {
+    var index = Math.floor(Math.random() * UserAgent.length)
+    return UserAgent[index]
+  }
   downloadHTML () {
-    const ua = USERAGENT[0]
     const options = {
       url: this.url,
       headers: {
-        'User-Agent': ua
+        'User-Agent': this.randomUserAgent()
       }
     }
     return new Promise((resolve, reject) => {

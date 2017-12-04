@@ -1,5 +1,6 @@
 import cheerio from 'cheerio'
 import { stringTrim, fullPath } from './utils'
+import { SOURCECODE } from './Constants'
 class TextExtract {
   constructor (seedData, html) {
     this.seedData = seedData
@@ -11,10 +12,10 @@ class TextExtract {
     if (!this.html) {
       return []
     }
-    if (this.seedData.sourceCode === 0) {
+    if (this.seedData.sourceCode === SOURCECODE.Readhub) {
       return this.readHubExtract()
     }
-    if (this.seedData.sourceCode === 1) {
+    if (this.seedData.sourceCode === SOURCECODE.oschina) {
       return this.oscExtract()
     }
   }
@@ -23,8 +24,9 @@ class TextExtract {
     nodeList.each((i, e) => {
       let a = this.$(e).find('a')
       this.extractData.push({
-        link: a.attr('href'),
-        text: a.text()
+        url: a.attr('href'),
+        title: a.text(),
+        source: SOURCECODE.Readhub
       })
     })
     return this.extractData
@@ -35,8 +37,9 @@ class TextExtract {
     nodeList.each((i, e) => {
       let a = this.$(e).find('a')
       this.extractData.push({
-        link: fullPath(this.seedData.host, a.attr('href')),
-        text: stringTrim(a.find('.text-ellipsis').text())
+        url: fullPath(this.seedData.host, a.attr('href')),
+        title: stringTrim(a.find('.text-ellipsis').text()),
+        source: SOURCECODE.oschina
       })
     })
     return this.extractData
