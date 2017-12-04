@@ -33,8 +33,7 @@ let storage = async newsList => {
     return
   }
   try {
-    let batchData = await newsService.batchSave(newsListTem)
-    console.log(batchData)
+    await newsService.batchSave(newsListTem)
   } catch (error) {
     console.log('保存失败')
     console.log(error)
