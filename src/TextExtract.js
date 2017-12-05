@@ -25,7 +25,8 @@ class TextExtract {
       title,
       source,
       status: OBJ_STATUS.DEFAULT,
-      createdTime: new Date()
+      createdTime: new Date(),
+      modifyTime: new Date()
     }
   }
   readHubExtract () {
