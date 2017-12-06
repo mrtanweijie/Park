@@ -12,11 +12,15 @@ class TextExtract {
     if (!this.html) {
       return []
     }
-    if (this.seedData.sourceCode === SOURCECODE.Readhub) {
-      return this.readHubExtract()
-    }
-    if (this.seedData.sourceCode === SOURCECODE.oschina) {
-      return this.oscExtract()
+    try {
+      if (this.seedData.sourceCode === SOURCECODE.Readhub) {
+        return this.readHubExtract()
+      }
+      if (this.seedData.sourceCode === SOURCECODE.oschina) {
+        return this.oscExtract()
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
   extractDataFactory (url, title, source) {
@@ -46,7 +50,7 @@ class TextExtract {
       let a = this.$(e).find('a')
       this.extractData.push(
         this.extractDataFactory(
-          fullPath(this.seedData.host),
+          fullPath(this.seedData.host, a.attr('href')),
           stringTrim(a.find('.text-ellipsis').text()),
           SOURCECODE.oschina
         )
