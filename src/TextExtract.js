@@ -57,11 +57,12 @@ class TextExtract {
     let nodeList = this.$('#kinds-of-news').find('.item')
     nodeList.each((i, e) => {
       let a = this.$(e).find('a')
+      let summaryDom = this.$(e).find('.summary')
       this.extractData.push(
         this.extractDataFactory(
           fullPath(this.seedData.host, a.attr('href')),
           stringTrim(a.find('.text-ellipsis').text()),
-          '',
+          summaryDom.text(),
           SOURCECODE.oschina
         )
       )
