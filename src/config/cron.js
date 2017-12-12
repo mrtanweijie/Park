@@ -1,3 +1,3 @@
 export default {
-  cronTime: '0 40 14 * * *'
+  cronTime: '0 30 9 * * *'
 }
