@@ -1,5 +1,6 @@
 import cron from 'cron'
 import spider from './spider'
+import cronConfig from './config/cron'
 
 /**
  *  # ┌────────────── second (optional)
@@ -14,7 +15,7 @@ import spider from './spider'
  */
 function job () {
   let cronJob = new cron.CronJob({
-    cronTime: '0 30 9 * * *',
+    cronTime: cronConfig.cronTime,
     onTick: () => {
       spider()
     },

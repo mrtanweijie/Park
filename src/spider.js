@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
-import Downloader from './src/Downloader'
-import TextExtract from './src/TextExtract'
-import seedsList from './src/SeedsList'
-import config from './src/config'
-import newsService from './src/storage/services/NewsService'
+import Downloader from './Downloader'
+import TextExtract from './TextExtract'
+import seedsList from './SeedsList'
+import config from './config'
+import newsService from './storage/services/NewsService'
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.mongodbConfig.url, {
