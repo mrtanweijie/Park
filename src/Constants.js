@@ -8,7 +8,8 @@ const OBJ_STATUS = {
 const SOURCECODE = {
   defaut: 0,
   Readhub: 1,
-  oschina: 2
+  oschina: 2,
+  toutiao: 3
 }
 
 export { UserAgent, OBJ_STATUS, SOURCECODE }

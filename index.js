@@ -11,16 +11,18 @@ mongoose.connect(config.mongodbConfig.url, {
 })
 
 let spider = () => {
+  console.time('spider')
   seedsList.forEach(async element => {
     let respondData = await new Downloader(
       `${element.host}${element.seed}`
     ).downloadHTML()
     let extractData = new TextExtract(element, respondData).extract()
-    storage(extractData)
+    storage(element, extractData)
   })
+  console.timeEnd('spider')
 }
 
-let storage = async newsList => {
+let storage = async (seedData, newsList) => {
   let newsListTem = []
   for (const item of newsList) {
     let newsData = await newsService.findObj({ url: item.url })
@@ -28,7 +30,7 @@ let storage = async newsList => {
       newsListTem.push(item)
     }
   }
-  console.log('新增加链接：' + newsListTem.length)
+  console.log(`[${seedData.text}]新增加链接： ${newsListTem.length}`)
   if (newsListTem.length === 0) {
     return
   }
