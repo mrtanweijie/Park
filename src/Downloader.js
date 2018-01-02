@@ -1,4 +1,5 @@
 import request from 'request'
+import puppeteer from 'puppeteer'
 import { UserAgent } from './Constants'
 class Downloader {
   constructor (url) {
@@ -8,7 +9,15 @@ class Downloader {
     var index = Math.floor(Math.random() * UserAgent.length)
     return UserAgent[index]
   }
-  downloadHTML () {
+  downloadHTML (downloader = 0) {
+    if (downloader === 0) {
+      return this.requestDownloadHTML()
+    } else {
+      return this.puppeteerDownloadHTML()
+    }
+  }
+
+  requestDownloadHTML () {
     const options = {
       url: this.url,
       headers: {
@@ -23,6 +32,22 @@ class Downloader {
           return reject(err)
         }
       })
+    })
+  }
+
+  puppeteerDownloadHTML () {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const browser = await puppeteer.launch({ headless: true })
+        const page = await browser.newPage()
+        await page.goto(this.url)
+        const bodyHandle = await page.$('body')
+        const bodyHTML = await page.evaluate(body => body.innerHTML, bodyHandle)
+        return resolve(bodyHTML)
+      } catch (err) {
+        console.log(err)
+        return reject(err)
+      }
     })
   }
 }

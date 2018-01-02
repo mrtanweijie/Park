@@ -8,12 +8,14 @@
     "clean": "rimraf dist",
     "build": "NODE_ENV=\"production\" npm run clean && mkdir dist && babel src -D -d dist",
     "dev": "babel-node src/index.js",
-    "spider": "npm run build && pm2 start dist/index.js --name park"
+    "spider": "npm run build && pm2 start dist/index.js --name park",
+    "test": "mocha src/test/*.js --require babel-register --reporter spec || exit 0"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "cron": "^1.3.0",
     "mongoose": "^4.13.6",
+    "puppeteer": "^0.13.0",
     "request": "^2.83.0"
   },
   "devDependencies": {
@@ -27,7 +29,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.24.1",
+    "chai": "^4.1.2",
     "es6-error": "^4.0.2",
+    "mocha": "^4.0.1",
     "rimraf": "^2.6.2"
   }
 }

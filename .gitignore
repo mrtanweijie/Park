@@ -4,3 +4,4 @@ dist/
 */dist/
 npm-debug.log
 src/config/mongo.js
+puppeteer_dev_profile-*

@@ -12,4 +12,9 @@ const SOURCECODE = {
   toutiao: 3
 }
 
-export { UserAgent, OBJ_STATUS, SOURCECODE }
+const DOWNLOADER = {
+  defaut: 0,
+  puppeteer: 1
+}
+
+export { UserAgent, OBJ_STATUS, SOURCECODE, DOWNLOADER }
