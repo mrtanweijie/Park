@@ -1,16 +1,17 @@
 import request from 'request'
 import puppeteer from 'puppeteer'
-import { UserAgent } from './Constants'
+import { UserAgent, DOWNLOADER } from './Constants'
 class Downloader {
-  constructor (url) {
+  constructor (url, downloader) {
     this.url = url
+    this.downloader = downloader || DOWNLOADER.defaut
   }
   randomUserAgent () {
     var index = Math.floor(Math.random() * UserAgent.length)
     return UserAgent[index]
   }
-  downloadHTML (downloader = 0) {
-    if (downloader === 0) {
+  downloadHTML () {
+    if (this.downloader === DOWNLOADER.defaut) {
       return this.requestDownloadHTML()
     } else {
       return this.puppeteerDownloadHTML()

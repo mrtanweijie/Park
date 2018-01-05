@@ -22,6 +22,9 @@ class TextExtract {
       if (this.seedData.sourceCode === SOURCECODE.toutiao) {
         return this.toutiaoExtract()
       }
+      if (this.seedData.sourceCode === SOURCECODE._36kr) {
+        return this._36KrExtract()
+      }
     } catch (error) {
       console.log(error)
     }
@@ -81,6 +84,33 @@ class TextExtract {
           stringTrim(a.text()),
           summaryDom.find('a').text(),
           SOURCECODE.toutiao
+        )
+      )
+    })
+    return this.extractData
+  }
+
+  _36KrExtract () {
+    let nodeList = this.$('.sameday_list').find('li')
+    nodeList.each((i, e) => {
+      let id = this.$(e).attr('id')
+      let contentDom = this.$(e).find('.fast_news_content')
+      let a = contentDom.find('p>a')
+      this.extractData.push(
+        this.extractDataFactory(
+          fullPath(
+            this.seedData.host,
+            a.attr('href')
+              ? a.attr('href')
+              : [this.seedData.host, this.seedData.seed, '/', id].join('')
+          ),
+          stringTrim(
+            this.$(e)
+              .find('.title')
+              .text()
+          ),
+          contentDom.find('span').text(),
+          SOURCECODE._36kr
         )
       )
     })

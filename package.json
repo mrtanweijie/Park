@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "NODE_ENV=\"production\" npm run clean && mkdir dist && babel src -D -d dist",
-    "dev": "babel-node src/index.js",
+    "dev": "babel-node src/dev.js",
     "spider": "npm run build && pm2 start dist/index.js --name park",
     "test": "mocha src/test/*.js --require babel-register --reporter spec || exit 0"
   },

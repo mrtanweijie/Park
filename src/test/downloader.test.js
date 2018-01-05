@@ -5,9 +5,9 @@ import { DOWNLOADER } from '../Constants'
 describe('downloader test', () => {
   it('puppeteer downloader', async done => {
     let respondData = await new Downloader(
-      'http://www.mofish.online/'
-    ).downloadHTML(DOWNLOADER.puppeteer)
-    console.log(respondData)
+      'http://36kr.com/newsflashes',
+      DOWNLOADER.puppeteer
+    ).downloadHTML()
     expect(respondData).to.be.a('string')
     done()
   })

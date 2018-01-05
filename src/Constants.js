@@ -9,7 +9,8 @@ const SOURCECODE = {
   defaut: 0,
   Readhub: 1,
   oschina: 2,
-  toutiao: 3
+  toutiao: 3,
+  _36kr: 4
 }
 
 const DOWNLOADER = {

@@ -14,7 +14,8 @@ let spider = () => {
   console.time('spider')
   seedsList.forEach(async element => {
     let respondData = await new Downloader(
-      `${element.host}${element.seed}`
+      `${element.host}${element.seed}`,
+      element.downloader
     ).downloadHTML()
     let extractData = new TextExtract(element, respondData).extract()
     storage(element, extractData)
