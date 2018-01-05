@@ -4,6 +4,7 @@ import TextExtract from './TextExtract'
 import seedsList from './SeedsList'
 import config from './config'
 import newsService from './storage/services/NewsService'
+import { DOWNLOADER } from './Constants'
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.mongodbConfig.url, {
@@ -15,7 +16,7 @@ let spider = () => {
   seedsList.forEach(async element => {
     let respondData = await new Downloader(
       `${element.host}${element.seed}`,
-      element.downloader
+      element.downloader || DOWNLOADER.defaut
     ).downloadHTML()
     let extractData = new TextExtract(element, respondData).extract()
     storage(element, extractData)

@@ -4,22 +4,19 @@ export default [
     sourceCode: SOURCECODE.Readhub,
     text: 'ReadHub',
     host: 'https://readhub.me',
-    seed: '/tech',
-    downloader: DOWNLOADER.defaut
+    seed: '/tech'
   },
   {
     sourceCode: SOURCECODE.oschina,
     text: '开源中国',
     host: 'https://www.oschina.net',
-    seed: '/news/industry',
-    downloader: DOWNLOADER.defaut
+    seed: '/news/industry'
   },
   {
     sourceCode: SOURCECODE.toutiao,
     text: '开发者头条',
     host: 'https://toutiao.io',
-    seed: '/posts/hot/7',
-    downloader: DOWNLOADER.defaut
+    seed: '/posts/hot/7'
   },
   {
     sourceCode: SOURCECODE._36kr,

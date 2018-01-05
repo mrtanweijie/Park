@@ -2,9 +2,9 @@ import request from 'request'
 import puppeteer from 'puppeteer'
 import { UserAgent, DOWNLOADER } from './Constants'
 class Downloader {
-  constructor (url, downloader) {
+  constructor (url, downloader = DOWNLOADER.defaut) {
     this.url = url
-    this.downloader = downloader || DOWNLOADER.defaut
+    this.downloader = downloader
   }
   randomUserAgent () {
     var index = Math.floor(Math.random() * UserAgent.length)
