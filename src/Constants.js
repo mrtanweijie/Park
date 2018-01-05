@@ -6,7 +6,7 @@ const OBJ_STATUS = {
 }
 
 const SOURCECODE = {
-  defaut: 0,
+  default: 0,
   Readhub: 1,
   oschina: 2,
   toutiao: 3,
@@ -14,7 +14,7 @@ const SOURCECODE = {
 }
 
 const DOWNLOADER = {
-  defaut: 0,
+  default: 0,
   puppeteer: 1
 }
 

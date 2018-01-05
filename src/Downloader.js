@@ -2,7 +2,7 @@ import request from 'request'
 import puppeteer from 'puppeteer'
 import { UserAgent, DOWNLOADER } from './Constants'
 class Downloader {
-  constructor (url, downloader = DOWNLOADER.defaut) {
+  constructor (url, downloader = DOWNLOADER.default) {
     this.url = url
     this.downloader = downloader
   }
@@ -11,7 +11,7 @@ class Downloader {
     return UserAgent[index]
   }
   downloadHTML () {
-    if (this.downloader === DOWNLOADER.defaut) {
+    if (this.downloader === DOWNLOADER.default) {
       return this.requestDownloadHTML()
     } else {
       return this.puppeteerDownloadHTML()

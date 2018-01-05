@@ -16,7 +16,7 @@ let spider = () => {
   seedsList.forEach(async element => {
     let respondData = await new Downloader(
       `${element.host}${element.seed}`,
-      element.downloader || DOWNLOADER.defaut
+      element.downloader || DOWNLOADER.default
     ).downloadHTML()
     let extractData = new TextExtract(element, respondData).extract()
     storage(element, extractData)
